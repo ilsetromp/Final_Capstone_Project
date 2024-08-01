@@ -1,0 +1,21 @@
+---
+title: "Choose Your Own Project"
+author: "Ilse Tromp"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This is the last graded project of the Capstone course of the Harvard Data Science series. For this project, I have chosen a data set to practice my machine learning knowledge. The data set that I will be using is the "Human Activity Recognition Using Smartphones" (HARUS) data set. The HARUS data set consists of the recordings from 30 participants who performed daily tasks while wearing a smartphone around their waist. 
+
+The participants were aged between 19 and 48 years of age and each participant performed 6 daily activities. These activities were: walking, walking downstairs, sitting, standing, and laying. 
+
+The data set has already been divided into training and test sets. Of the participants, 70% was randomly selected to form the training set, and 30% was selected to form the test set. 
+
+In this project, I will develop a model that determines the type of activity, based on data collected by smartphone sensors. 
+
+
+

@@ -112,6 +112,13 @@ duplicate_column_names
 # Renaming duplicates
 colnames(combined_data) <- make.names(colnames(combined_data), unique = TRUE)
 
+
+# Ensuring the 'Activity' column is a factor with correct labels
+combined_data$Activity <- factor(combined_data$Activity, 
+                                 levels = c(1, 2, 3, 4, 5, 6), 
+                                 labels = c("Walking", "Walking Upstairs", "Walking Downstairs", 
+                                            "Sitting", "Standing", "Laying"))
+
 # Bar plot of activity distribution
 ggplot(combined_data, aes(x = Activity)) +
   geom_bar() +

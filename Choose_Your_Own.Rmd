@@ -23,7 +23,7 @@ In this project, I will develop a model that determines the type of activity, ba
 
 Before we start, we need to load the needed libraries.
 
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 if (!require(e1071)) install.packages("dplyr")
 if (!require(e1071)) install.packages("tidyverse")
 if (!require(e1071)) install.packages("caret")
@@ -47,7 +47,7 @@ library("e1071")
 
 The data has already been split into training and test sets. So, we can load the data immediately.
 
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 
 # Loading the train data
 X_train <- read.table("X_train.txt")
@@ -94,7 +94,7 @@ test_data$Activity <- factor(test_data$Activity, levels = activity_labels$Activi
 
 Next we will combine the data into one set for possible data exploration.
 
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 combined_data <- rbind(
   cbind(subject_train, y_train, X_train),
   cbind(subject_test, y_test, X_test)
@@ -122,7 +122,7 @@ table(combined_data$Activity)
 
 Next, we will make sure there are no duplicate column names and make a barplot of the different activities. 
 
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 # Checking for duplicate column names
 duplicate_columns <- duplicated(colnames(combined_data))
 print(duplicate_columns)
@@ -158,21 +158,21 @@ A decision tree splits the data its given into smaller sets at each decision nod
 We first start by fitting the model.
 We use the "class" method, because we want to classify activity type.
 
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 # Fitting the decision tree model
 tree_model <- rpart(Activity ~ ., data = train_data, method = "class")
 ```
 
 Next, we can see the decision tree.
 
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 # Plotting the decision tree
 rpart.plot(tree_model, type = 3, extra = 101, fallen.leaves = TRUE, main = "Decision Tree for Activity Recognition")
 ```
 
 We now use the decision tree model to predict activity type in the test set. 
 
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 # Predicting on the test set
 tree_predictions <- predict(tree_model, test_data, type = "class")
 ```
@@ -207,7 +207,7 @@ set.seed(123)
 
 We again start by training the model on the training set.
 
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 # Training the Random Forest model
 rf_model <- randomForest(Activity ~ ., data = train_data, ntree = 100, importance = TRUE)
 
@@ -216,14 +216,14 @@ rf_model
 
 Next, we use this model to make predictions on the test set. 
 
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 # Using the model to predict based on the test set
 rf_predictions <- predict(rf_model, test_data)
 ```
 
 Finally, we again calculate the confusion matrix and show the accuracy.
 
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 # Confusion matrix and accuracy
 rf_conf_matrix <- confusionMatrix(rf_predictions, test_data$Activity)
 rf_conf_matrix
@@ -250,7 +250,7 @@ set.seed(123)
 
 Next, we train the SVM model, using the training set.
 
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 # Training the SVM model with a linear kernel
 svm_model <- svm(Activity ~ ., data = train_data, kernel = "linear", scale = TRUE)
 
@@ -259,14 +259,14 @@ svm_model
 
 Now, we predict activity type on the test set using the SVM model.
 
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 # Predicting on the test set
 svm_predictions <- predict(svm_model, test_data)
 ```
 
 And finally, we calculate the confusion matrix and show the accuracy.
 
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 # Confusion matrix and accuracy
 svm_conf_matrix <- confusionMatrix(svm_predictions, test_data$Activity)
 svm_conf_matrix

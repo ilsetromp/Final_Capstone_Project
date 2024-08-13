@@ -213,6 +213,9 @@ accuracy_table
 
 # Conclusion
 
+# In this project I compared two models, Random Forest and SVM, to the baseline model, decision tree. 
+# I used these models to predict activity type, based on data collected by smartphone sensors. 
+
 # The baseline model already worked quite well, with an accuracy of 0.840.
 # The RF model was a good improvement with an accuracy of 0.928. 
 # And the SVM model worked best, with an accuracy of 0.957.
@@ -228,6 +231,7 @@ accuracy_table
 # This would mean, that although these models seem to work good on the test data, 
 # they might not on real data. 
 
+# Finally, for the future, it would be interesting to see how these models would do with "real world" data.
 
 # References
 

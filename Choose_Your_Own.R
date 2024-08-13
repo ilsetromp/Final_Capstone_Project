@@ -16,6 +16,9 @@ library("rpart.plot")
 library("randomForest")
 library("e1071")
 
+# The data set used for this project can be found at:
+# https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones
+
 # Introduction
 
 #This is the last graded project of the Capstone course of the Harvard Data Science series. 
@@ -82,7 +85,10 @@ train_data$Activity <- factor(train_data$Activity, levels = activity_labels$Acti
 test_data$Activity <- factor(test_data$Activity, levels = activity_labels$ActivityID, labels = activity_labels$ActivityName)
 
 # Combining all data into one data frame for data exploration
-combined_data <- cbind(subject_data, y_data, X_data)
+combined_data <- rbind(
+  cbind(subject_train, y_train, X_train),
+  cbind(subject_test, y_test, X_test)
+)
 
 # Before we start the data exploration, let's check for missing values
 

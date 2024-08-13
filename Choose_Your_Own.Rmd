@@ -2,7 +2,9 @@
 title: "Choose Your Own Project"
 author: "Ilse Tromp"
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -93,7 +95,10 @@ test_data$Activity <- factor(test_data$Activity, levels = activity_labels$Activi
 Next we will combine the data into one set for possible data exploration.
 
 ```{r, echo=TRUE}
-combined_data <- cbind(subject_data, y_data, X_data)
+combined_data <- rbind(
+  cbind(subject_train, y_train, X_train),
+  cbind(subject_test, y_test, X_test)
+)
 ```
 
 ### Missing values
